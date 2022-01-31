@@ -61,7 +61,7 @@ public class RentalService {
 
     private static void printRentedCars(){
         System.out.println("All rented Cars");
-        for (int i = 0; i < availableCars.size(); i++) {{
+        for (int i = 0; i < rentedCars.size(); i++) {{
             System.out.println("(" + (i + 1) + ") " + rentedCars.get(i).getName());
         }
         }
