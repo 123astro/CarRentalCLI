@@ -30,7 +30,7 @@ public class UserInput {
     public static int readInt(String question) {
         while (true) {
             try {
-                System.out.print(question + "\nSelection: ");
+                System.out.print(question + "\nSelection:  ");
                 int temp = scanner.nextInt(); // exception risk
                 return temp;
             } catch (InputMismatchException e) {

@@ -61,7 +61,7 @@ public class RentalService {
 
     private static void printRentedCars(){
         System.out.println("All rented Cars");
-        for (int i = 0; i < availableCars.size(); i++) {{
+        for (int i = 0; i < rentedCars.size(); i++) {{
             System.out.println("(" + (i + 1) + ") " + rentedCars.get(i).getName());
         }
         }
@@ -69,6 +69,7 @@ public class RentalService {
     }
 
     private static void exitMenu(){
+        System.out.println("There aren't any more cars to rent!");
         System.out.println("1) Would you like to reset all cars to available?\n2) Would you like to exit? ");
         int input = UserInput.readInt("Please enter a selection");
         switch (input) {
