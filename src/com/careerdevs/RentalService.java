@@ -83,8 +83,8 @@ public class RentalService {
     }
 
     private static void exitMenu() {
-        System.out.println("There aren't any more cars to rent!");
-        System.out.println("1) Would you like to reset all cars to available?\n2) Would you like to exit? ");
+        System.out.println("\nThere aren't any more cars to rent!");
+        System.out.println("1) Would you like to reset all cars to available?\n2) Would you like to exit?\n");
         int input = UserInput.readInt("Please enter a selection", 1, 2);
         switch (input) {
             case 1 -> {
