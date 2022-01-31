@@ -1,7 +1,6 @@
 package com.careerdevs;
 
 import com.careerdevs.ui.UserInput;
-
 import java.util.ArrayList;
 
 
@@ -40,10 +39,11 @@ public class RentalService {
     private static void rentACar() {
         int input = UserInput.readInt("Please enter a car you would like to rent or exit to main menu.", 1,
                 availableCars.size() + 1);
-        if ((availableCars.size() + 1) == input) {
+        if ((availableCars.size() + 1) == input) { // EXIT TO MAIN MENU
             mainMenu();
             return;
         }
+        availableCars.get(input -1 ).setIsRented(true);
         System.out.println("\nThank you for renting a " + availableCars.get(input - 1).getName() + ".\n");
         rentedCars.add(availableCars.remove(input - 1));
         mainMenu();
@@ -56,6 +56,7 @@ public class RentalService {
             mainMenu();
             return;
         }
+        rentedCars.get(input -1).setIsRented(false);
         System.out.println("\nThank you for returning a " + rentedCars.get(input - 1).getName() + ".\n");
         availableCars.add(rentedCars.remove(input - 1));
         mainMenu();

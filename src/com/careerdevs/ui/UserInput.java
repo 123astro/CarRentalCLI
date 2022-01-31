@@ -8,15 +8,9 @@ public class UserInput {
 
     public static String readString(String question) {
         System.out.println(question + "\nInput: ");
-         String inputString = scanner.next();
-         return inputString;
+        String inputString = scanner.next();
+        return inputString.trim();
     }
-//            if(!inputString.trim().equals(""))  {  // if not equal to anything => true
-//                    return inputString.trim();
-//            }
-//            System.out.println("You must enter something!");
-
-
 //    public static int readInt(String question) {
 //        System.out.println(question + "\nNumber: ");
 //        while (!scanner.hasNextInt()) {
@@ -31,8 +25,8 @@ public class UserInput {
             try {
                 System.out.print(question + "\nSelection:  ");
                 int temp = scanner.nextInt(); // exception risk
-                if(temp >= min && temp <= max){
-                return temp;
+                if (temp >= min && temp <= max) {
+                    return temp;
                 }
             } catch (InputMismatchException e) {
                 scanner.nextLine();
