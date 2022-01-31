@@ -9,7 +9,7 @@ public class TestUI {
         System.out.println("Okay you are: " + userInput);
 
         int input;
-        input = UserInput.readInt("What is your age? ");
-        System.out.println("Okay your age is: " + input);
+        //input = UserInput.readInt("What is your age? ");
+        //System.out.println("Okay your age is: " + input);
     }
 }

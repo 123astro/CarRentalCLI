@@ -27,12 +27,14 @@ public class UserInput {
 //        return scanner.nextInt();
 //    }
 
-    public static int readInt(String question) {
+    public static int readInt(String question, int min, int max) {
         while (true) {
             try {
                 System.out.print(question + "\nSelection:  ");
                 int temp = scanner.nextInt(); // exception risk
+                if(temp >= min && temp <= max){
                 return temp;
+                }
             } catch (InputMismatchException e) {
                 scanner.nextLine();
                 System.out.println("You must enter an integer, try again");
