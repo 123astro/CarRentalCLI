@@ -27,12 +27,13 @@ public class RentalService {
 
 
     private static void mainMenu() {
-        System.out.println("1) Rent a car\n2) Return a car\n3) Exit\n");
-        int input = UserInput.readInt("Please enter a selection", 1, 3);
+        System.out.println("1) Rent a car\n2) Return a car\n3) Create a car\n4) exit");
+        int input = UserInput.readInt("Please enter a selection", 1, 4);
         switch (input) {
             case 1 -> printAvailableCars();
             case 2 -> printRentedCars();
-            case 3 -> System.exit(0);
+            case 3 -> createACar();
+            case 4 -> System.exit(0);
         }
     }
 
@@ -97,5 +98,12 @@ public class RentalService {
             case 2 -> System.exit(0);
         }
     }
-}
 
+    private static void createACar() {
+        String make = UserInput.readString("What is the make of the car?");
+        String model = UserInput.readString("What is the model of the car?");
+        Car car = new Car(make, model);
+        availableCars.add(car);
+        mainMenu();
+    }
+}
