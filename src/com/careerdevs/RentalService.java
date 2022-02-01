@@ -36,7 +36,7 @@ public class RentalService {
 
 
     private static void mainMenu() {
-        System.out.println("1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return " +
+        System.out.println("\n1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return " +
                 "(" + (rentedCars.size()) + " Cars Available)" + "\n3)" +
                 " Create a car\n4) " +
                 "exit");
@@ -58,7 +58,7 @@ public class RentalService {
         }
         while (true) {
             String answer =
-                    UserInput.readString("Are you sure you would like to rent the " + (availableCars.get(input - 1).getName()) + "?").toLowerCase(Locale.ROOT);
+                    UserInput.readString("Are you sure you would like to rent the " + (availableCars.get(input - 1).getName()) + "? (yes/no)").toLowerCase(Locale.ROOT);
             if (answer.equals("yes") || answer.equals("y")) {
                 String customer = UserInput.readString("What is the name you would like to use to return your " +
                         "rental?\nEnter name: ").toLowerCase();
@@ -143,7 +143,7 @@ public class RentalService {
                 System.out.println("(" + (i + 1) + ") " + rentedCars.get(i).getName() + " (Customer name : " + rentedCars.get(i).getCustomer() + ")");
             }
         }
-        System.out.println("(" + (rentedCars.size() + 1) + ")" + " Return to main menu\n");
+        System.out.println("(" + (rentedCars.size() + 1) + ")" + " Return to previous menu\n");
     }
 
     private static void exitMenu() {
