@@ -9,6 +9,9 @@ public class UserInput {
     public static String readString(String question) {
         System.out.println(question + "\nInput: ");
         String inputString = scanner.next();
+        if (inputString.equals(" ")){
+            readString(question);
+        }
         return inputString.trim();
     }
 //    public static int readInt(String question) {
