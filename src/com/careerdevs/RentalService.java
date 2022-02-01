@@ -1,17 +1,14 @@
 package com.careerdevs;
 
 import com.careerdevs.ui.UserInput;
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 
 public class RentalService {
 
     public static ArrayList<Car> availableCars = new ArrayList<>();
-    public static List<Car> rentedCars = new ArrayList<>();
+    public static ArrayList<Car> rentedCars = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println("Welcome to the Car Rental CLI!");
@@ -55,6 +52,10 @@ public class RentalService {
     private static void rentACar() {
         int input = UserInput.readInt("Please enter a car you would like to rent or exit to main menu.", 1,
                 availableCars.size() + 1);
+        if ((availableCars.size() + 1) == input) { // EXIT TO MAIN MENU
+            mainMenu();
+            return;
+        }
         while (true) {
             String answer =
                     UserInput.readString("Are you sure you would like to rent the " + (availableCars.get(input - 1).getName()) + "?").toLowerCase(Locale.ROOT);
@@ -66,11 +67,7 @@ public class RentalService {
             }
             if (answer.equals("no") || answer.equals("n"))
                 printAvailableCars();
-                rentACar();
-        }
-        if ((availableCars.size() + 1) == input) { // EXIT TO MAIN MENU
-            mainMenu();
-            return;
+                continue;
         }
         availableCars.get(input - 1).
                 setRented(true);
@@ -122,7 +119,6 @@ public class RentalService {
                 }
             }
         }
-
     }
     private static void printAvailableCars() {
         if (availableCars.size() == 0) {
