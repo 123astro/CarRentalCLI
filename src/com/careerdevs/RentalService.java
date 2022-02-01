@@ -43,7 +43,7 @@ public class RentalService {
         int input = UserInput.readInt("Please enter a selection", 1, 4);
         switch (input) {
             case 1 -> printAvailableCars();
-            case 2 -> printRentedCars();
+            case 2 -> returnCarByName();
             case 3 -> createACar();
             case 4 -> System.exit(0);
         }
@@ -96,19 +96,20 @@ public class RentalService {
             System.out.println("No cars to return");
             mainMenu();
         } else {
-            int numInput = UserInput.readInt("Enter selection to continue or return to main menu", 1,
-                    rentedCars.size() + 1);
-            if (numInput == rentedCars.size() + 1) {
+            System.out.println("\nPlease make a selection");
+            int numInput = UserInput.readInt("1) Select if you are sure you would like to return a car\n2) Return " +
+                            "to main menu", 1,
+                    2);
+            if (numInput == 2) {
                 mainMenu();
-            } else {
+            }
+            if (numInput == 1){
+                printRentedCars();
                 String input = UserInput.readString("Enter the name used to rent the car").toLowerCase().trim();
-                System.out.println(rentedCars.get(0).getCustomer());
-                if (rentedCars.size() == 0) {
-                    System.out.println("No cars to return");
-                    mainMenu();
-                }
                 for (int i = 0; i < rentedCars.size(); i++) {
                     if (rentedCars.get(i).getCustomer().equals(input)) {
+                        System.out.println("Customer " + rentedCars.get(i).getCustomer() + "s' car has been returned " +
+                                "to inventory." );
                         rentedCars.get(i).setCustomer("");
                         availableCars.add(rentedCars.remove(i));
                         mainMenu();
@@ -120,6 +121,7 @@ public class RentalService {
             }
         }
     }
+
     private static void printAvailableCars() {
         if (availableCars.size() == 0) {
             exitMenu();
@@ -142,7 +144,6 @@ public class RentalService {
             }
         }
         System.out.println("(" + (rentedCars.size() + 1) + ")" + " Return to main menu\n");
-        returnCarByName();
     }
 
     private static void exitMenu() {
