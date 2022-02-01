@@ -28,6 +28,7 @@ public class UserInput {
                 if (temp >= min && temp <= max) {
                     return temp;
                 }
+                scanner.nextLine();
             } catch (InputMismatchException e) {
                 scanner.nextLine();
                 System.out.println("You must enter an integer, try again");
