@@ -4,7 +4,7 @@ public class Car {
     private String make;
     private String model;
     private boolean isRented;
-    public String customer;
+    private String customer;
 
 
     public Car(String make, String model) {

@@ -34,7 +34,6 @@ public class RentalService {
         rentedCars.clear();
     }
 
-
     private static void mainMenu() {
         System.out.println("\n1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return " +
                 "(" + (rentedCars.size()) + " Cars Available)" + "\n3)" +
@@ -67,7 +66,6 @@ public class RentalService {
             }
             if (answer.equals("no") || answer.equals("n"))
                 printAvailableCars();
-                continue;
         }
         availableCars.get(input - 1).
                 setRented(true);
@@ -75,21 +73,8 @@ public class RentalService {
                 getName() + " " + availableCars.get(input -1 ).getCustomer() + ".\n");
         rentedCars.add(availableCars.remove(input - 1));
         mainMenu();
-
     }
 
-//    private static void returnACar() {
-//        int input = UserInput.readInt("Please enter a car you would like to return or exit to main menu.", 1,
-//                rentedCars.size() + 1);
-//        if ((rentedCars.size() + 1) == input) {
-//            mainMenu();
-//            return;
-//        }
-//        rentedCars.get(input - 1).setRented(false);
-//        System.out.println("\nThank you for returning a " + rentedCars.get(input - 1).getName() + ".\n");
-//        availableCars.add(rentedCars.remove(input - 1));
-//        mainMenu();
-//    }
 
     private static void returnCarByName() {
         if (rentedCars.size() == 0) {
@@ -105,7 +90,9 @@ public class RentalService {
             }
             if (numInput == 1){
                 printRentedCars();
-                String input = UserInput.readString("Enter the name used to rent the car").toLowerCase().trim();
+                String input =
+                        UserInput.readString("Enter the name used to rent the car or select a number to return to " +
+                                "previous menu").toLowerCase().trim();
                 for (int i = 0; i < rentedCars.size(); i++) {
                     if (rentedCars.get(i).getCustomer().equals(input)) {
                         System.out.println("Customer " + rentedCars.get(i).getCustomer() + "s' car has been returned " +
@@ -168,3 +155,15 @@ public class RentalService {
         mainMenu();
     }
 }
+//    private static void returnACar() {
+//        int input = UserInput.readInt("Please enter a car you would like to return or exit to main menu.", 1,
+//                rentedCars.size() + 1);
+//        if ((rentedCars.size() + 1) == input) {
+//            mainMenu();
+//            return;
+//        }
+//        rentedCars.get(input - 1).setRented(false);
+//        System.out.println("\nThank you for returning a " + rentedCars.get(input - 1).getName() + ".\n");
+//        availableCars.add(rentedCars.remove(input - 1));
+//        mainMenu();
+//    }
