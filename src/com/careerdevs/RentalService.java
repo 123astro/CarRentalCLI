@@ -1,6 +1,7 @@
 package com.careerdevs;
 
 import com.careerdevs.ui.UserInput;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -34,18 +35,22 @@ public class RentalService {
     }
 
     private static void mainMenu() {
-        System.out.println("\n1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return " +
-                "(" + (rentedCars.size()) + " Cars Available)" + "\n3)" +
-                " Create a car\n4) " +
-                "Exit");
-        int input = UserInput.readInt("Please enter a selection", 1, 4);
-        switch (input) {
-            case 1 -> printAvailableCars();
-            case 2 -> returnCarByName();
-            case 3 -> createACar();
-            case 4 -> System.exit(0);
+        boolean on = true;
+        while (on) {
+            System.out.println("\n1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return " +
+                    "(" + (rentedCars.size()) + " Cars Available)" + "\n3)" +
+                    " Create a car\n4) " +
+                    "Exit");
+            int input = UserInput.readInt("Please enter a selection", 1, 4);
+            switch (input) {
+                case 1 -> printAvailableCars();
+                case 2 -> returnCarByName();
+                case 3 -> createACar();
+                case 4 -> on = false;
+            }
         }
     }
+
 
     private static void rentACar() {
         int input = UserInput.readInt("Please enter a car you would like to rent or exit to main menu.", 1,
@@ -135,7 +140,7 @@ public class RentalService {
         System.out.println("\nThere are no cars to rent!");
         System.out.println("1) Would you like to reset all cars to available?\n2) Would you like to create a new " +
                 "car?\n3) Exit program");
-        int input = UserInput.readInt("Please enter a selection", 1, 2);
+        int input = UserInput.readInt("Please enter a selection", 1, 3);
         switch (input) {
             case 1 -> {
                 flipCarsToAllAvailable();
