@@ -122,7 +122,7 @@ public class RentalService {
                 System.out.println("(" + (i + 1) + ") " + availableCars.get(i).getName());
             }
         }
-        System.out.println("(" + (availableCars.size() + 1) + ")" + " Return to main menu\n");
+        System.out.println("(" + (availableCars.size() + 1) + ")" + " Exit to main menu\n");
         rentACar();
     }
 
