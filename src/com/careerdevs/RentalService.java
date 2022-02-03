@@ -83,34 +83,28 @@ public class RentalService {
         if (rentedCars.size() == 0) {
             System.out.println("No cars to return");
             mainMenu();
-        } else {
-            System.out.println("\nPlease make a selection");
-            int numInput = UserInput.readInt("1) Select if you are sure you would like to return a car\n2) Return " +
-                            "to main menu", 1,
-                    2);
-            if (numInput == 1) {
-                printRentedCars();
-                String input =
-                        UserInput.readString("Enter the name used to rent the car or select a number to return to " +
-                                "previous menu").toLowerCase().trim();
-                for (int i = 0; i < rentedCars.size(); i++) {
-                    if (rentedCars.get(i).getCustomer().equals(input)) {
-                        System.out.println("Customer " + rentedCars.get(i).getCustomer() + "s' car has been returned " +
-                                "to inventory.");
-                        rentedCars.get(i).setCustomer("");
-                        availableCars.add(rentedCars.remove(i));
-                        mainMenu();
-                    } else {
-                        System.out.println("Please try again");
-                        returnCarByName();
-                    }
-                }
-            }
-            if (numInput == 2) {
+        }
+        printRentedCars();
+        String input =
+                UserInput.readString("Enter the name used to rent the car or type exit to " +
+                        "go to main menu").toLowerCase().trim();
+        if ( input.equals("exit")) { // EXIT TO MAIN MENU
+            mainMenu();
+            return;
+        }
+        for (int i = 0; i < rentedCars.size(); i++) {
+            if (rentedCars.get(i).getCustomer().equals(input)) {
+                System.out.println( rentedCars.get(i).getCustomer() + "'s car has been returned " +
+                        "to inventory.");
+                rentedCars.get(i).setCustomer("");
+                availableCars.add(rentedCars.remove(i));
                 mainMenu();
             }
         }
+        System.out.println("Please try again");
+        returnCarByName();
     }
+
 
     private static void printAvailableCars() {
         if (availableCars.size() == 0) {
@@ -133,7 +127,7 @@ public class RentalService {
                 System.out.println("(" + (i + 1) + ") " + rentedCars.get(i).getName() + " (Customer name : " + rentedCars.get(i).getCustomer() + ")");
             }
         }
-        System.out.println("(" + (rentedCars.size() + 1) + ")" + " Return to previous menu\n");
+        System.out.println("(" + (rentedCars.size() + 1) + ")" + " Type exit to return to main menu\n");
     }
 
     private static void exitMenu() {
