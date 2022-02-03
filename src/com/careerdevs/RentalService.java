@@ -66,6 +66,7 @@ public class RentalService {
                 String customer = UserInput.readString("What is the name you would like to use to return your " +
                         "rental?\nEnter name: ").toLowerCase();
                 availableCars.get(input - 1).setCustomer(customer);
+                availableCars.get(input -1).setRented(true);
                 break;
             }
             if (answer.equals("no") || answer.equals("n"))
@@ -81,13 +82,13 @@ public class RentalService {
 
     private static void returnCarByName() {
         if (rentedCars.size() == 0) {
-            System.out.println("No cars to return");
+            System.out.println("No cars to return!!");
             mainMenu();
         }
         printRentedCars();
         String input =
                 UserInput.readString("Enter the name used to rent the car or type exit to " +
-                        "go to main menu").toLowerCase().trim();
+                        "go to main menu.").toLowerCase().trim();
         if ( input.equals("exit")) { // EXIT TO MAIN MENU
             mainMenu();
             return;
@@ -127,20 +128,21 @@ public class RentalService {
                 System.out.println("(" + (i + 1) + ") " + rentedCars.get(i).getName() + " (Customer name : " + rentedCars.get(i).getCustomer() + ")");
             }
         }
-        System.out.println("(" + (rentedCars.size() + 1) + ")" + " Type exit to return to main menu\n");
+        System.out.println("(" + (rentedCars.size() + 1) + ")" + " Type exit to return to main menu.\n");
     }
 
     private static void exitMenu() {
         System.out.println("\nThere are no cars to rent!");
         System.out.println("1) Would you like to reset all cars to available?\n2) Would you like to create a new " +
-                "car?\n3) Exit program");
+                "car?\n3) Main Menu\n4) Exit Program!");
         int input = UserInput.readInt("Please enter a selection", 1, 3);
         switch (input) {
             case 1 -> {
                 flipCarsToAllAvailable();
             }
             case 2 -> createACar();
-            case 3 -> System.exit(0);
+            case 3 -> mainMenu();
+            case 4 -> System.exit(0);
         }
     }
 
