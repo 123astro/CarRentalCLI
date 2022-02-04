@@ -7,7 +7,7 @@ import java.util.Locale;
 
 public class RentalService {
 
-    public static ArrayList<Car> availableCars = new ArrayList<>();
+    public static ArrayList<Car> availableCars ;
     public static ArrayList<Car> rentedCars = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -17,6 +17,7 @@ public class RentalService {
     }
 
     private static void createCars() {
+        availableCars = new ArrayList<>();
         Car car1 = new Car("Honda", "Accord");
         Car car2 = new Car("Chevy", "Cruze");
         Car car3 = new Car("Toyota", "Corolla");
@@ -37,10 +38,21 @@ public class RentalService {
     private static void mainMenu() {
         boolean on = true;
         while (on) {
-            System.out.println("\n1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return " +
+
+//            StringBuilder MENU = new StringBuilder();
+//            MENU.append("\n1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return" +
+//                    " " +
+//                    "(" + (rentedCars.size()) + " Cars Available)" + "\n3)" +
+//                    " Create a car\n4) " +
+//                    "Exit");
+//            System.out.println(MENU);
+            System.out.println("\n1) Rent a car" + " (" + (availableCars.size()) + " Cars Available)" + "\n2) Return" +
+                    " " +
                     "(" + (rentedCars.size()) + " Cars Available)" + "\n3)" +
                     " Create a car\n4) " +
                     "Exit");
+
+
             int input = UserInput.readInt("Please enter a selection", 1, 4);
             switch (input) {
                 case 1 -> printAvailableCars();
@@ -74,7 +86,7 @@ public class RentalService {
         }
         availableCars.get(input - 1).setRented(true);
         System.out.println("\nThank you for renting a " + availableCars.get(input - 1).
-                getName() + " " + availableCars.get(input - 1).getCustomer() + ".\n");
+                getName() + " " + availableCars.get(input - 1).getCustomer()  + ".\n");
         rentedCars.add(availableCars.remove(input - 1));
         mainMenu();
     }
